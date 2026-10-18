@@ -62,8 +62,18 @@ const ExperienceForm = ({ data, onChange }) => {
                             <div className='grid md:grid-cols-2 gap-3'>
                                 <input value={experience.company || ''} onChange={e => updateExperience(index, 'company', e.target.value)} type='text' placeholder='Company Name' className={inputClass} />
                                 <input value={experience.position || ''} onChange={e => updateExperience(index, 'position', e.target.value)} type='text' placeholder='Job Title' className={inputClass} />
-                                <input value={experience.start_date || ''} onChange={e => updateExperience(index, 'start_date', e.target.value)} type='month' className={inputClass} />
-                                <input value={experience.is_current ? '' : experience.end_date || ''} onChange={e => updateExperience(index, 'end_date', e.target.value)} type='month' disabled={experience.is_current} className={inputClass} />
+                                <label className='flex flex-col gap-1 text-xs font-medium text-gray-600'>
+                                    Start Date
+                                    <input value={experience.start_date || ''} onChange={e => updateExperience(index, 'start_date', e.target.value)} type='month' className={inputClass} />
+                                </label>
+                                <label className='flex flex-col gap-1 text-xs font-medium text-gray-600'>
+                                    End Date
+                                    {experience.is_current ? (
+                                        <input value='Present' type='text' disabled title='Untick "Currently working here" to choose an end date' className={inputClass + ' text-gray-500'} />
+                                    ) : (
+                                        <input value={experience.end_date || ''} onChange={e => updateExperience(index, 'end_date', e.target.value)} type='month' className={inputClass} />
+                                    )}
+                                </label>
                             </div>
 
                             <label className='flex items-center gap-2'>

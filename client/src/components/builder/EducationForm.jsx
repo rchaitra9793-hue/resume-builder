@@ -42,11 +42,14 @@ const EducationForm = ({ data, onChange }) => {
                                 </button>
                             </div>
 
-                            <div className='grid md:grid-cols-2 gap-3'>
+                            <div className='grid md:grid-cols-2 gap-3 items-end'>
                                 <input value={education.institution || ''} onChange={e => updateEducation(index, 'institution', e.target.value)} type='text' placeholder='Institution Name' className={inputClass} />
                                 <input value={education.degree || ''} onChange={e => updateEducation(index, 'degree', e.target.value)} type='text' placeholder="Degree (e.g., Bachelor's, Master's)" className={inputClass} />
                                 <input value={education.field || ''} onChange={e => updateEducation(index, 'field', e.target.value)} type='text' placeholder='Field of Study' className={inputClass} />
-                                <input value={education.graduation_date || ''} onChange={e => updateEducation(index, 'graduation_date', e.target.value)} type='month' className={inputClass} />
+                                <label className='flex flex-col gap-1 text-xs font-medium text-gray-600'>
+                                    Graduation Date
+                                    <input value={education.graduation_date || ''} onChange={e => updateEducation(index, 'graduation_date', e.target.value)} type='month' className={inputClass} />
+                                </label>
                             </div>
                             <input value={education.gpa || ''} onChange={e => updateEducation(index, 'gpa', e.target.value)} type='text' placeholder='GPA (optional)' className={inputClass} />
                         </div>
